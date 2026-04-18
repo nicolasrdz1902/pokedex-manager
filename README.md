@@ -31,6 +31,7 @@ A full-stack web app to search Pokémon, manage a personal collection, and ident
 ### 1. Clone / enter the project
 
 ```bash
+git clone https://github.com/nicolasrdz1902/pokedex-manager.git
 cd pokedex-manager
 ```
 
