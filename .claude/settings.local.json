@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dpkg -l)",
+      "Bash(npm install *)",
+      "Bash(node -e \"require\\('better-sqlite3'\\)\")",
+      "Bash(node *)",
+      "Bash(npm create *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3001/api/health)"
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.sprite {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.info {
+  text-align: center;
+}
+
+.id {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.name {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.types {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+
+.type {
+  font-size: 0.7rem;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.actions {
+  margin-top: 0.5rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.add {
+  background: #cc0000;
+  color: #fff;
+}
+
+.remove {
+  background: #e0e0e0;
+  color: #333;
+}
