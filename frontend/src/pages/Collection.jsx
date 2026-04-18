@@ -85,6 +85,7 @@ export default function Collection() {
             pokemon={p}
             inCollection
             onRemove={handleRemove}
+            officialArtwork
           />
         ))}
       </div>

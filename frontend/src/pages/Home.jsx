@@ -6,6 +6,7 @@ export default function Home() {
   const { user } = useAuth();
   return (
     <div className={styles.hero}>
+      <div className={styles.content}>
       <h1 className={styles.title}>PokéDex Manager</h1>
       <p className={styles.sub}>Search, collect, and identify Pokémon from your cards.</p>
       <div className={styles.actions}>
@@ -20,6 +21,7 @@ export default function Home() {
             <Link to="/login" className={styles.secondary}>Login</Link>
           </>
         )}
+      </div>
       </div>
     </div>
   );
