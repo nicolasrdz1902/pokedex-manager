@@ -6,6 +6,7 @@ const { initDb } = require('./models/db');
 const authRoutes = require('./routes/auth');
 const pokemonRoutes = require('./routes/pokemon');
 const collectionRoutes = require('./routes/collection');
+const aiRoutes = require('./routes/ai');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/pokemon', pokemonRoutes);
 app.use('/api/collection', collectionRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 

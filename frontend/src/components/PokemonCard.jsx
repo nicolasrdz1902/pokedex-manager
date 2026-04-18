@@ -8,7 +8,15 @@ const typeColors = {
   ghost: '#705898', steel: '#b8b8d0',
 };
 
+const SHOWN_STATS = ['hp', 'attack', 'defense', 'speed'];
+const STAT_LABELS = { hp: 'HP', attack: 'Atk', defense: 'Def', speed: 'Spd' };
+const STAT_COLORS = { hp: '#78c850', attack: '#f08030', defense: '#6890f0', speed: '#f8d030' };
+
 export default function PokemonCard({ pokemon, inCollection, onAdd, onRemove }) {
+  const displayStats = pokemon.stats
+    ? pokemon.stats.filter((s) => SHOWN_STATS.includes(s.name))
+    : [];
+
   return (
     <div className={styles.card}>
       <img
@@ -29,6 +37,25 @@ export default function PokemonCard({ pokemon, inCollection, onAdd, onRemove }) 
               >
                 {t}
               </span>
+            ))}
+          </div>
+        )}
+        {displayStats.length > 0 && (
+          <div className={styles.stats}>
+            {displayStats.map((s) => (
+              <div key={s.name} className={styles.statRow}>
+                <span className={styles.statLabel}>{STAT_LABELS[s.name]}</span>
+                <div className={styles.statBarBg}>
+                  <div
+                    className={styles.statBarFill}
+                    style={{
+                      width: `${Math.round((s.value / 255) * 100)}%`,
+                      background: STAT_COLORS[s.name],
+                    }}
+                  />
+                </div>
+                <span className={styles.statValue}>{s.value}</span>
+              </div>
             ))}
           </div>
         )}

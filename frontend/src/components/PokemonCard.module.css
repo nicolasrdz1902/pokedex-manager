@@ -54,6 +54,49 @@
   font-weight: 600;
 }
 
+.stats {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.statLabel {
+  font-size: 0.62rem;
+  color: #888;
+  width: 22px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.statBarBg {
+  flex: 1;
+  height: 5px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.statBarFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.statValue {
+  font-size: 0.62rem;
+  color: #555;
+  width: 20px;
+  flex-shrink: 0;
+}
+
 .actions {
   margin-top: 0.5rem;
 }

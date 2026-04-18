@@ -16,8 +16,21 @@ export default function Collection() {
     try {
       const { data } = await api.get('/collection');
       setCollection(data);
-    } catch {}
-    setLoading(false);
+      setLoading(false);
+      const enriched = await Promise.all(
+        data.map(async (item) => {
+          try {
+            const { data: full } = await api.get(`/pokemon/search?name=${item.pokemon_name}`);
+            return { ...item, types: full.types, stats: full.stats };
+          } catch {
+            return item;
+          }
+        })
+      );
+      setCollection(enriched);
+    } catch {
+      setLoading(false);
+    }
   }
 
   function showToast(msg) {

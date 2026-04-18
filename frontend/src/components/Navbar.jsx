@@ -18,6 +18,7 @@ export default function Navbar() {
         <div className={styles.links}>
           <Link to="/search">Search</Link>
           <Link to="/collection">My Collection</Link>
+          <Link to="/assistant">AI Assistant</Link>
           <span className={styles.username}>{user.username}</span>
           <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>
         </div>

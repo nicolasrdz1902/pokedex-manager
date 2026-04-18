@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Search from './pages/Search';
 import Collection from './pages/Collection';
+import AIAssistant from './pages/AIAssistant';
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -22,6 +23,7 @@ function AppRoutes() {
         <Route path="/register" element={<Register />} />
         <Route path="/search" element={<PrivateRoute><Search /></PrivateRoute>} />
         <Route path="/collection" element={<PrivateRoute><Collection /></PrivateRoute>} />
+        <Route path="/assistant" element={<PrivateRoute><AIAssistant /></PrivateRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

@@ -7,7 +7,9 @@ A full-stack web app to search Pokémon, manage a personal collection, and ident
 - **Authentication** — register and login with JWT-based sessions
 - **Pokémon search** — browse and search via PokéAPI
 - **Collection management** — add/remove Pokémon to your personal list
+- **Base stats** — every Pokémon card shows HP, Attack, Defense, and Speed bars
 - **Card scanner** — upload a photo of a Pokémon card and GPT-4o identifies it automatically
+- **AI Assistant** — GPT-4o powered recommendations, fun facts, and smart comparisons (see below)
 
 ## Stack
 
@@ -68,6 +70,21 @@ npm run dev
 
 The app will be available at `http://localhost:5173`.
 
+## AI Assistant
+
+Navigate to **AI Assistant** in the top navbar (login required). The page has three sections:
+
+### Personalized Recommendations
+Click **Get Recommendations** to have GPT-4o analyse your current collection and suggest 3 Pokémon to add next, with a specific explanation for each — covering type coverage, evolution chains, and team synergy. Works even with an empty collection.
+
+### Pokémon Fun Facts
+Type any Pokémon name into the input field (e.g. `charizard`, `mewtwo`) and click **Get Fun Fact** to receive an AI-generated curiosity about that Pokémon.
+
+### Smart Comparison
+Select two Pokémon from your collection using the dropdowns and click **Compare**. GPT-4o fetches both Pokémon's full stats from PokéAPI and returns a detailed battle analysis covering type matchups, stat strengths, weaknesses, and an overall verdict.
+
+> **Note:** All three features require a valid `OPENAI_API_KEY` in `backend/.env`. The key is only used server-side and is never exposed to the browser.
+
 ## API Reference
 
 | Method | Path                        | Auth | Description                        |
@@ -80,6 +97,9 @@ The app will be available at `http://localhost:5173`.
 | POST   | /api/collection             | Yes  | Add Pokémon to collection          |
 | DELETE | /api/collection/:pokemonId  | Yes  | Remove from collection             |
 | POST   | /api/collection/identify    | Yes  | Upload image → identify + add      |
+| POST   | /api/ai/recommendations     | Yes  | AI-suggested Pokémon based on collection |
+| GET    | /api/ai/funfact/:name       | Yes  | AI fun fact about a Pokémon        |
+| POST   | /api/ai/compare             | Yes  | AI battle comparison of two Pokémon |
 
 ## Project Structure
 
@@ -87,17 +107,17 @@ The app will be available at `http://localhost:5173`.
 pokedex-manager/
 ├── backend/
 │   ├── src/
-│   │   ├── controllers/   # Business logic (auth, pokemon, collection, image)
+│   │   ├── controllers/   # Business logic (auth, pokemon, collection, image, ai)
 │   │   ├── middleware/    # JWT auth guard
 │   │   ├── models/        # Database initialization and query helpers
-│   │   └── routes/        # Express route declarations
+│   │   └── routes/        # Express route declarations (auth, pokemon, collection, ai)
 │   ├── .env.example
 │   └── package.json
 └── frontend/
     ├── src/
     │   ├── components/    # Navbar, PokemonCard, UploadModal
     │   ├── context/       # AuthContext (JWT state)
-    │   ├── pages/         # Home, Login, Register, Search, Collection
+    │   ├── pages/         # Home, Login, Register, Search, Collection, AIAssistant
     │   └── services/      # Axios instance with auth interceptor
     └── package.json
 ```
